@@ -1,0 +1,307 @@
+<style>  
+
+    body {
+        overflow: hidden; /* Скрываем scrollbars */
+    }
+
+    html, body, #app, #main {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-size: 14px;
+        font-weight: 300;
+        color: #7F91A4;
+    }
+
+    #app {
+        display: flex;
+        justify-content: center;
+    }
+
+    #main {
+        display: flex;
+    }
+
+    #login {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 39px 61px 50px;
+        max-width: 452px;
+        max-height: 497px;
+        background-color: #17212B;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #7f7f7f;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        box-sizing: border-box;
+    }
+
+    .auth__text{
+        text-align: center;
+        padding: 5%;
+        margin-bottom: 37px;
+    }
+
+    .auth__text-title{
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 28px;
+        color: #fff;
+        margin-bottom: 13px;
+    }
+
+    .auth__text-desc{
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 18px;
+        color: #7F91A4;
+    }
+
+    .auth__input input{
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 16px;
+        color: #858F98;;
+        background-color: transparent;
+        border: transparent;
+        border-bottom: 1px solid #465461;
+        padding: 13px;
+        width: 90%;
+        text-align: center;
+
+        margin-bottom: 42px;
+    }
+
+    .auth__btn{
+        padding: 13px 40px;
+        background-color: #5188C1;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 17px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+    }
+
+    .auth{
+        text-align: center;
+    }
+
+    .auth__icon{
+        width: 139px;
+        height: 139px;
+    }
+
+
+
+    .left-side {
+    flex-grow: 1;
+    max-width: 320px;
+    background: linear-gradient(to bottom, #17212B, #17212B);
+    color: #7F91A4;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+    .user-info {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .user-name {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .user-photo, .message-item-photo {
+        margin-right: 15px;
+        background: url(/projects/mega-chat-3/no-photo.png);
+        background-size: cover;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+    }
+
+    .user-list-header {
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .user-list {
+        padding: 5px 0 0 10px
+    }
+
+    .right-side {
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        padding-left: 2px;
+        background-color: #0E1621;
+    }
+
+    .messages-container {
+        position: relative;
+        flex-grow: 1;
+        /* overflow: scroll; */
+        padding: 10px;
+    }
+
+    .input-container {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .message-input {
+        height: 30px;
+        flex-grow: 1;
+    }
+
+    input.message-input {
+        background-color: #17212B;
+        border: none;
+        height: 54px;
+        padding: 18px 12px;
+        min-width: 100%;
+        z-index: 10;
+        color: #fff;
+        box-sizing: border-box;
+    }   
+
+    .send-button {
+        position: absolute;
+        right: 3%;
+        background-color: #5387C1;
+        padding: 6px 20px;
+        border-radius: 5px;
+        color: #fff;
+        Font-family: Ubuntu;
+        Font-style: Regular;
+        Font-size: 14px;
+        Line-height: 16px;
+        z-index: 20;
+        border: none;
+    }
+
+    .my-message-item{
+        display: flex;
+        justify-content: right;
+        text-align: right;
+    }
+
+    .message-item {
+        display: flex;
+        align-items: center;
+    }
+
+    .message-item-system {
+        font-size: 14px;
+        color: gray;
+    }
+
+    .message-item ~ .message-item {
+        margin-top: 15px;
+    }
+
+    .message-item-right {
+        flex-grow: 1;
+    }
+
+    .message-item-header {
+        display: flex;
+        align-items: center;
+    }
+
+    .message-item-header-name {
+        font-weight: bold;
+        margin-right: 15px;
+    }
+
+    .message-item-header-time {
+        color: gray;
+        font-size: 12px;
+    }
+
+    .header-container {
+        height: 56px;
+        background-color: #17212B;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 16px;
+    }   
+
+    .header__title{
+        color: #fff;
+        margin-bottom: 4px;
+    }
+
+    .header__count{
+        Font-size: 12px
+    }
+
+
+</style>
+
+<div id="app">
+    <div class="hidden" id="login">
+        <div class="auth" >
+            <div class="auth__img">
+                <img src="./auth_icn.png" alt="" class="auth__icon">
+            </div>
+            <div class="auth__text">
+                <div class="auth__text-title">
+                    Авторизация
+                </div>
+                <div class="auth__text-desc">
+                    Введите пожалуйста свой ник для дальнейшей авторизации
+                </div>
+            </div>
+            <div class="auth__input">
+                <input type="text" data-role="login-name-input" placeholder="Введите свой ник">
+            </div>
+            <button class="auth__btn" data-role="login-submit">ВОЙТИ</button>
+            <div class="auth-error" data-role="login-error"></div>
+        </div>
+    </div>
+
+    <div id="main" class="hidden">
+        <div class="left-side">
+            <div class="user-info">
+                <div class="user-photo" data-role="user-photo"></div>
+                <div class="user-name" data-role="user-name"></div>
+            </div>
+
+            <div class="user-list-container">
+                <div class="user-list-header">
+                    Все пользователи:
+                </div>
+
+                <div class="user-list" data-role="user-list">
+                </div>
+            </div>
+        </div>
+        <div class="right-side">
+            <div class="header-container">
+                <div class="header__title">Чат</div>
+                <div class="header__count" data-role="users-count">Кол-во участников</div>
+            </div>
+            <div class="messages-container" data-role="messages-list"></div>
+            <div class="input-container" data-role="message-sender">
+                <input class="message-input" data-role="message-input" type="text" placeholder="Введите сообщение..."/>
+                <button class="send-button" data-role="message-send-button">Отправить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
